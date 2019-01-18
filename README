@@ -1,0 +1,35 @@
+
+Scenarios:
+
+1. both services in a single process:
+
+spring.application.name=monolith
+projects.enabled=true
+allocations.enabled=true
+
+- create a project
+- create an allocation
+- verify that creation of allocation all happens internally to the process, and that the ProjectService bean was wired into the allocations service
+
+
+2. two instances of application, each configured uniquely:
+
+A:
+application configured one way:
+spring.application.name=allocations
+allocations.enabled=true
+projects.enabled=false
+
+B:
+second instance configured like this:
+spring.application.name=projects
+allocations.enabled=false
+projects.enabled=false
+
+start eureka
+start B, make sure it registers with eureka under the right name
+create a project
+start A, make sure it registers with eureka under the right name
+create an allocation
+verify that allocation service is autowired with a feign projectclient
+

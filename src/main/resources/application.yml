@@ -1,0 +1,40 @@
+---
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+---
+spring:
+  profiles: allocations
+  application:
+    name: allocations
+
+projects:
+  enabled: false
+allocations:
+  enabled: true
+
+---
+spring:
+  profiles: projects
+  application:
+    name: projects
+
+projects:
+  enabled: true
+allocations:
+  enabled: false
+
+---
+spring:
+  profiles: monolith
+  application:
+    name: monolith
+
+projects:
+  enabled: true
+allocations:
+  enabled: true
