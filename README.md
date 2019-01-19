@@ -40,7 +40,7 @@ There's a slight difference in how Spring MVC endpoints for a service are expose
 
 ### Scenario #1:  Monolith
 
-1. Start up a eureka server.  One way to do this is with the spring cloud cli, as follows:
+1. Start up a eureka server.  One way to do this is with the [Spring Cloud CLI](http://cloud.spring.io/spring-cloud-cli/single/spring-cloud-cli.html), as follows:
 
     ```bash
     spring cloud eureka
