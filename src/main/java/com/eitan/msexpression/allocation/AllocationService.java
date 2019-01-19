@@ -2,20 +2,23 @@ package com.eitan.msexpression.allocation;
 
 import com.eitan.msexpression.project.Project;
 import com.eitan.msexpression.project.ProjectClient;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Profile("allocations")
 @Service
+@Primary
 public class AllocationService implements AllocationClient {
   private final AllocationRepository repository;
   private final ProjectClient projectClient;
 
   public AllocationService(AllocationRepository repository,
-                           @Qualifier("runtimeProjectClient") ProjectClient runtimeProjectClient) {
+                           ProjectClient projectClient) {
     this.repository = repository;
-    this.projectClient = runtimeProjectClient;
+    this.projectClient = projectClient;
   }
 
   @Override

@@ -1,43 +1,16 @@
-spring:
-  application:
-    name: monolith
-
-server:
-  port: 8080
-
-services:
-  active:
-    - projects
-    - allocations
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-
+management.endpoints.web.exposure.include: "*"
 ---
-spring:
-  profiles: projects
-  application:
-    name: projects
-
-server:
-  port: 8081
-
-services:
-  active:
-    - projects
-
+spring.profiles: projects
+spring.application.name: projects
+server.port: 8081
 ---
-spring:
-  profiles: allocations
-  application:
-    name: allocations
-
-server:
-  port: 8082
-
-services:
-  active:
-    - allocations
+spring.profiles: allocations
+spring.application.name: allocations
+server.port: 8082
+---
+spring.profiles: monolith-settings
+spring.application.name: monolith
+server.port: 8080
+---
+spring.profiles: monolith
+spring.profiles.include: projects, allocations, monolith-settings

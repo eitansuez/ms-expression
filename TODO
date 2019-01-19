@@ -1,17 +1,5 @@
 
-some tests worth running
-- verify actuator/beans endpoint to ensure that beans for disabled services are not created
-- verify actuator/mappings endpoint to ensure endpoint for colocated services are namespaced and standalone services are at the root url
-
 - start building some automated tests!
-
 - find a way to generalize how this is configured
-- in this context it's easier not to use annotations and to configure the beans in one place.
-  i know spring has an alternative syntax now for configuring a web app, its routes, etc..
-  worth looking into
-
-- tuck everything in as a dependency and configure it all using spring boot autoconfiguration
-
-instead of conditionalonexpression, just use @Profile
-eliminate services.active
-and instead use spring.profiles.active to tell you which services you have in play
+- can everything be tucked into a dependency?
+- study other mechanism (not using annotations) for configuring spring and spring mvc (declarative/dsl/method/api)

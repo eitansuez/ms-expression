@@ -1,25 +1,24 @@
 package com.eitan.msexpression;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Component
-@ConfigurationProperties(prefix="services")
 public class ServicesConfiguration {
-  private final List<String> active = new ArrayList<>();
+  private final List<String> activeServices;
 
-  public List<String> getActive() {
-    return active;
+  public ServicesConfiguration(Environment environment) {
+    this.activeServices = Arrays.asList(environment.getActiveProfiles());
   }
 
   public boolean isServiceActive(String serviceName) {
-    return active.contains(serviceName);
+    return activeServices.contains(serviceName);
   }
 
   public boolean isStandalone() {
-    return active.size() == 1;
+    return activeServices.size() == 1;
   }
 }

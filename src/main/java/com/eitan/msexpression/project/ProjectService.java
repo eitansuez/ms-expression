@@ -1,10 +1,14 @@
 package com.eitan.msexpression.project;
 
+import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Profile("projects")
 @Service
+@Primary
 public class ProjectService implements ProjectClient {
   private final ProjectRepository repository;
 
