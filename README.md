@@ -71,7 +71,7 @@ There's a slight difference in how Spring MVC endpoints for a service are expose
 6. Visit the actuator endpoints `env`, `beans`, and `mappings` to review how your application is configured and what beans are active.  Note that the ProjectController's route is `/projects`, and the AllocationController's route is `/allocations`.
 
 
-### Scenario 2: MicroServices
+### Scenario #2: MicroServices
 
 1. Again, begin with a running eureka server.
 
