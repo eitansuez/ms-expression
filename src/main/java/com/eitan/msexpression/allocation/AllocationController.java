@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("#{${allocations.standalone} ? '/' : '/allocations'}")
+@RequestMapping("#{ @servicesConfiguration.standalone ? '/' : '/allocations' }")
 public class AllocationController {
   private final AllocationService service;
 

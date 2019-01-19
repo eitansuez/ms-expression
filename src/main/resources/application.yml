@@ -1,4 +1,14 @@
----
+spring:
+  application:
+    name: monolith
+
+server:
+  port: 8080
+
+services:
+  active:
+    - projects
+    - allocations
 
 management:
   endpoints:
@@ -15,10 +25,9 @@ spring:
 server:
   port: 8081
 
-projects:
-  standalone: true
-allocations:
-  standalone: false
+services:
+  active:
+    - projects
 
 ---
 spring:
@@ -29,21 +38,6 @@ spring:
 server:
   port: 8082
 
-projects:
-  standalone: false
-allocations:
-  standalone: true
-
----
-spring:
-  profiles: monolith
-  application:
-    name: monolith
-
-server:
-  port: 8080
-
-projects:
-  standalone: false
-allocations:
-  standalone: false
+services:
+  active:
+    - allocations

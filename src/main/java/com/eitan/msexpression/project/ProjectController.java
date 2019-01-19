@@ -8,7 +8,7 @@ import java.util.Optional;
 import static org.springframework.http.HttpStatus.CREATED;
 
 @RestController
-@RequestMapping("#{${projects.standalone} ? '/' : '/projects'}")
+@RequestMapping("#{ @servicesConfiguration.standalone ? '/' : '/projects' }")
 public class ProjectController {
   private final ProjectService projectService;
 
