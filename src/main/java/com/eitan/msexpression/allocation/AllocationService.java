@@ -3,7 +3,6 @@ package com.eitan.msexpression.allocation;
 import com.eitan.msexpression.project.Project;
 import com.eitan.msexpression.project.ProjectClient;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -14,7 +13,7 @@ public class AllocationService implements AllocationClient {
   private final ProjectClient projectClient;
 
   public AllocationService(AllocationRepository repository,
-                           ProjectClient runtimeProjectClient) {
+                           @Qualifier("runtimeProjectClient") ProjectClient runtimeProjectClient) {
     this.repository = repository;
     this.projectClient = runtimeProjectClient;
   }

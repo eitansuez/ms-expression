@@ -8,25 +8,31 @@ management:
 
 ---
 spring:
-  profiles: allocations
-  application:
-    name: allocations
-
-projects:
-  enabled: false
-allocations:
-  enabled: true
-
----
-spring:
   profiles: projects
   application:
     name: projects
 
+server:
+  port: 8081
+
 projects:
-  enabled: true
+  standalone: true
 allocations:
-  enabled: false
+  standalone: false
+
+---
+spring:
+  profiles: allocations
+  application:
+    name: allocations
+
+server:
+  port: 8082
+
+projects:
+  standalone: false
+allocations:
+  standalone: true
 
 ---
 spring:
@@ -34,7 +40,10 @@ spring:
   application:
     name: monolith
 
+server:
+  port: 8080
+
 projects:
-  enabled: true
+  standalone: false
 allocations:
-  enabled: true
+  standalone: false

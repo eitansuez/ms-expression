@@ -16,4 +16,8 @@ public class ProjectService implements ProjectClient {
   public Optional<Project> getProject(Long id) {
     return repository.findById(id);
   }
+
+  public Project create(Project project) {
+    return repository.save(project);
+  }
 }

@@ -21,13 +21,13 @@ public class MsExpressionApplication {
 
 	@Bean
 	public ProjectClient runtimeProjectClient(
-			@Value("${projects.enabled}") boolean projectsEnabled,
+			@Value("${allocations.standalone}") boolean allocationsStandalone,
 			ProjectService projectService,
 			@Qualifier("feignProjectsClient") ProjectClient feignProjectsClient) {
-		if (projectsEnabled) {
-			return projectService;
-		} else {
+		if (allocationsStandalone) {
 			return feignProjectsClient;
+		} else {
+			return projectService;
 		}
 	}
 

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Optional;
 
-@FeignClient(value = "projects", qualifier = "feignProjectsClient")
+@FeignClient(value = "projects", qualifier = "feignProjectsClient", decode404 = true)
 public interface ProjectClient {
 
   @GetMapping("/{id}")
