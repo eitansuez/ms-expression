@@ -1,5 +1,5 @@
 
-- start building some automated tests!
-- find a way to generalize how this is configured
+- automated tests
+- can this be turned into a framework? made more generic?  should it?
 - can everything be tucked into a dependency?
 - study other mechanism (not using annotations) for configuring spring and spring mvc (declarative/dsl/method/api)
