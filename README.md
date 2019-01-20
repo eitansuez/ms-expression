@@ -18,7 +18,7 @@ This project is an experiment to vet whether it's possible to build a codebase t
 
 Beans are conditionally added to the application context if their corresponding service is enabled.
 
-The current implementation leverages Spring profiles as a mechanism to turn a particular service on or off.
+The implementation leverages Spring profiles as a mechanism to turn a particular service on or off.
 
 The example shows two services:  projects, and allocations.  There is a dependency from allocations to projects.  When creating an allocation, the allocation service calls the project service in order to lookup the associated project and determine if it is active.
 
@@ -32,7 +32,7 @@ When deploying the same jar differently:
 
 This "switching" from direct in-process calls to calls over REST is done transparently.  If the target service is local, the application configuration ensures that the local bean is autowired.  Conversely, when the service is remote, Spring just autowires the feign client.
 
-The beauty of feign shines here in that both implementations of ProjectClient (ProjectService and the Feign client) implement the same interface.  So the service clients (AllocationService in this case) are non the wiser.
+The beauty of feign shines here in that both implementations of ProjectClient (ProjectService and the Feign client) implement the same interface.  So the service clients (AllocationService in this case) are none the wiser.
 
 Services find each other via a Eureka discovery server.
 
