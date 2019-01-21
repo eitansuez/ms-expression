@@ -3,11 +3,9 @@ package com.eitan.msexpression.allocation;
 import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @Profile("allocations")
@@ -18,6 +16,18 @@ public class AllocationController {
 
   public AllocationController(AllocationService service) {
     this.service = service;
+  }
+
+  @GetMapping
+  public List<Allocation> list() {
+    return service.getAllocations();
+  }
+
+  @GetMapping("/{id}")
+  public ResponseEntity<Allocation> get(@PathVariable Long id) {
+    Optional<Allocation> maybeAllocation = service.getAllocation(id);
+    return maybeAllocation.map(ResponseEntity::ok)
+        .orElseGet(() -> ResponseEntity.notFound().build());
   }
 
   @PostMapping

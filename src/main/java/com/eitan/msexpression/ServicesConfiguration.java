@@ -14,10 +14,6 @@ public class ServicesConfiguration {
     this.activeServices = Arrays.asList(environment.getActiveProfiles());
   }
 
-  public boolean isServiceActive(String serviceName) {
-    return activeServices.contains(serviceName);
-  }
-
   public boolean isStandalone() {
     return activeServices.size() == 1;
   }

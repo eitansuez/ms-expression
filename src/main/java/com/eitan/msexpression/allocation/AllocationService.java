@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Profile("allocations")
@@ -20,6 +21,15 @@ public class AllocationService implements AllocationClient {
     this.repository = repository;
     this.projectClient = projectClient;
   }
+
+  public List<Allocation> getAllocations() {
+    return repository.findAll();
+  }
+
+  public Optional<Allocation> getAllocation(Long id) {
+    return repository.findById(id);
+  }
+
 
   @Override
   public Optional<Allocation> create(Allocation allocation) {

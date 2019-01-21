@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Profile("projects")
@@ -16,6 +17,10 @@ public class ProjectService implements ProjectClient {
     this.repository = repository;
   }
 
+  public List<Project> getProjects() {
+    return repository.findAll();
+  }
+
   @Override
   public Optional<Project> getProject(Long id) {
     return repository.findById(id);
@@ -24,4 +29,5 @@ public class ProjectService implements ProjectClient {
   public Project create(Project project) {
     return repository.save(project);
   }
+
 }
