@@ -1,5 +1,10 @@
 
-- automated tests
+- test that the bean wired into the allocation service for the field projectClient is the projectService when the project service is colocated with allocation.
+- test that the bean wired into the allocation service for the field projectClient is the feign projectClient when the project service is deployed separately from the allocation service.
+
+- see this work in kubernetes
+- divorce implementation from netflix projects eureka & feign
+
 - can this be turned into a framework? made more generic?  should it?
 - can everything be tucked into a dependency?
 - study other mechanism (not using annotations) for configuring spring and spring mvc (declarative/dsl/method/api)
