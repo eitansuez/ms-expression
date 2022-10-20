@@ -105,4 +105,6 @@ There's a slight difference in how Spring MVC endpoints for a service are expose
 
 7. Visit the actuator endpoints for each application.  Note that the project service has no allocation-related beans (other than a feign client) at its disposal.  Likewise for the allocation service:  the only project-related bean is the feign client, which is autowired into the allocation service.  Also, conveniently both domain objects are in the classpath, facilitating the unmarshalling of the Json.  This last point technically could cause microservices with too strong a degree of coupling and should be explored further.
 
-   
+## In summary..
+
+The basic idea is to have one project that can be deployed on a developer's local machine as a monolith (single process), but where the same codebase can be deployed as a distributed application on Kubernetes.  Your artifacts are a single jar file and a single docker image.
