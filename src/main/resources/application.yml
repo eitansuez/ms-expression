@@ -1,4 +1,6 @@
 management.endpoints.web.exposure.include: "*"
+spring.config.use-legacy-processing: true
+# at some point read https://medium.com/@iamdeepinjava/rewriting-application-properties-in-sprignboot-2-4-style-a32f4604656c
 ---
 spring.profiles: projects
 spring.application.name: projects

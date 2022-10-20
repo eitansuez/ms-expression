@@ -13,7 +13,7 @@ public class Allocation {
 
   private long projectId;
   private long userId;
-  private LocalDate start, end;
+  private LocalDate start, finish;
 
   @Override
   public boolean equals(Object o) {
@@ -24,12 +24,12 @@ public class Allocation {
         projectId == that.projectId &&
         userId == that.userId &&
         Objects.equals(start, that.start) &&
-        Objects.equals(end, that.end);
+        Objects.equals(finish, that.finish);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, projectId, userId, start, end);
+    return Objects.hash(id, projectId, userId, start, finish);
   }
 
   @Override
@@ -39,7 +39,7 @@ public class Allocation {
         ", projectId=" + projectId +
         ", userId=" + userId +
         ", start=" + start +
-        ", end=" + end +
+        ", finish=" + finish +
         '}';
   }
 
@@ -75,12 +75,12 @@ public class Allocation {
     this.start = start;
   }
 
-  public LocalDate getEnd() {
-    return end;
+  public LocalDate getFinish() {
+    return finish;
   }
 
-  public void setEnd(LocalDate end) {
-    this.end = end;
+  public void setFinish(LocalDate finish) {
+    this.finish = finish;
   }
 
   public Allocation() {
