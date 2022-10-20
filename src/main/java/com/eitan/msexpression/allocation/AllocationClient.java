@@ -10,12 +10,11 @@ import java.util.Optional;
 @Profile("!allocations")
 @FeignClient(
     value = "allocations",
-    qualifier = "feignAllocationsClient",
+    qualifiers = {"feignAllocationsClient"},
     decode404 = true,
     primary = false
 )
 public interface AllocationClient {
-
   @PostMapping
   Optional<Allocation> create(@RequestBody Allocation allocation);
 }

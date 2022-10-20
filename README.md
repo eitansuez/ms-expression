@@ -34,9 +34,7 @@ This "switching" from direct in-process calls to calls over REST is done transpa
 
 The beauty of feign shines here in that both implementations of ProjectClient (ProjectService and the Feign client) implement the same interface.  So the service clients (AllocationService in this case) are none the wiser.
 
-Services find each other via a Eureka discovery server.
-
-There's a slight difference in how Spring MVC endpoints for a service are exposed:  the root url is preferred if the service is deployed in a stand-alone way.  If however the running process contains more than a single microservice, then each service's endpoints are namespaced.  i.e. the base url/path to the controller endpoints for the project service becomes `/projects`.
+Services find each other via a Eureka service discovery.
 
 ### Scenario #1:  Monolith
 
@@ -92,15 +90,15 @@ There's a slight difference in how Spring MVC endpoints for a service are expose
 5. Perform the following REST API calls to create a project, look it up, and then create an allocation:
 
     ```bash
-    http post :8081 name="Project A"
-    http :8081/1
-    http post :8082 projectId=1 userId=1 start=2019-01-01 finish=2019-01-02
+    http post :8081/projects name="Project A"
+    http :8081/projects/1
+    http post :8082/allocations projectId=1 userId=1 start=2019-01-01 finish=2019-01-02
     ```
 
 6. Attempting to create an allocation for an invalid project should return a 400 (bad request):
 
     ```bash
-    http post :8082 projectId=2 userId=1 start=2019-01-01 finish=2019-01-02
+    http post :8082/allocations projectId=2 userId=1 start=2019-01-01 finish=2019-01-02
     ```
 
 7. Visit the actuator endpoints for each application.  Note that the project service has no allocation-related beans (other than a feign client) at its disposal.  Likewise for the allocation service:  the only project-related bean is the feign client, which is autowired into the allocation service.  Also, conveniently both domain objects are in the classpath, facilitating the unmarshalling of the Json.  This last point technically could cause microservices with too strong a degree of coupling and should be explored further.

@@ -10,12 +10,11 @@ import java.util.Optional;
 @Profile("!projects")
 @FeignClient(
     value = "projects",
-    qualifier = "feignProjectsClient",
+    qualifiers = {"feignProjectsClient"},
     decode404 = true,
     primary = false
 )
 public interface ProjectClient {
-
-  @GetMapping("/{id}")
+  @GetMapping("/projects/{id}")
   Optional<Project> getProject(@PathVariable Long id);
 }

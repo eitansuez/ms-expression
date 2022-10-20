@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Profile("allocations")
 @RestController
-@RequestMapping("#{ @servicesConfiguration.standalone ? '/' : '/allocations' }")
+@RequestMapping("/allocations")
 public class AllocationController {
   private final AllocationService service;
 

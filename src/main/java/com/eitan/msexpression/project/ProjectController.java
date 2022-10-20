@@ -11,7 +11,7 @@ import static org.springframework.http.HttpStatus.CREATED;
 
 @Profile("projects")
 @RestController
-@RequestMapping("#{ @servicesConfiguration.standalone ? '/' : '/projects' }")
+@RequestMapping("/projects")
 public class ProjectController {
   private final ProjectService projectService;
 
